@@ -5,12 +5,12 @@ export const resolvers = {
     randomNumber: (): number => {
       return Math.round(Math.random() * 100)
     },
-    getBlocks: async () => {
+    getBlocks: () => {
         return axios.get('https://blockchain.info/blocks?format=json')
         .then(res => res.data)
         .then(data => data.blocks)
     },
-    getBlockDetails: async (root, args) => {
+    getBlockDetails: (root, args) => {
       console.log(args)
       return axios.get(`https://blockchain.info/rawblock/${args.blockHash}`)
       .then(res => res.data)
