@@ -23,24 +23,27 @@
 1. Apollo Engine/Graph Manager integration for monitoring
 1. Serverless Dashboard monitoring
 
-## Setup
 
-- Setup your aws credentials and aws profile using `aws configure --profile <aws_profile>`
-- `npm install`
-- use `yarn start` to run in offline mode`
-- `yarn deploy:dev` to deploy dev environment
-- `yarn deploy:live` to deploy to live
+## Running the server
+
+- install the dependencies using `yarn`
+- use `yarn start` to run the server locally
 
 ## Environment variables
 
-- Environment variables can be setup in `env.yml` file
-- add your `ENGINE_API_KEY` to a .env file
+- environment variables can be setup in `env.yml` file where you can set different variable values for each aws stage / environment
 
-## Deploying
+## Caching
 
-- Install serverless cli using `npm i -g serverless`
-- Install and setup your aws cli with an "aws" profile using `aws config --profile=<aws_profile>`
-- use `yarn deploy:dev` or `yarn deploy:live`
+- The server utilizes apollo-server's cache capabilities to enable Automatic Persisted Queries as well as caching on the Schema level via redis.
+- The default setup uses a free redis cluster hosted on redislabs, redsmin.com can be used as a GUI around redis
+
+## Deployment
+
+- Setup your aws credentials and aws profile using `aws configure --profile <aws_profile>`
+- `npm install`
+- `yarn deploy:dev` to deploy dev environment
+- `yarn deploy:live` to deploy to live
 
 ## Releasing
 
