@@ -8,9 +8,9 @@ export default memo(function Block(props) {
     
       <Link to={`/details/${block.hash}`} key={block.hash} className="block-link">
           <article className="block">
-            <div>hash: {block.hash}</div>
-            <div>height: {block.height}</div>
-            <div>time: {block.time}</div>
+            <div><strong>hash:</strong> {block.hash}</div>
+            <div><strong>height:</strong> {block.height}</div>
+            <div><strong>time:</strong> {block.time}</div>
           </article>
         </Link>
     

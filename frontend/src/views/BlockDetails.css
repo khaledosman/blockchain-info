@@ -1,5 +1,8 @@
-.block-details {
+.block-container {
   width: 100%;
   height: 100%;
+}
+
+.block-details {
   text-align: center;
 }

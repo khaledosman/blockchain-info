@@ -1,5 +1,5 @@
 import React, {memo} from 'react'
-import {useParams} from 'react-router-dom'
+import {useParams, Link} from 'react-router-dom'
 import {useQuery, gql} from '@apollo/client'
 import Transaction from '../components/Transaction'
 import './BlockDetails.css'
@@ -33,16 +33,20 @@ export default memo(function BlockDetails() {
 
   const details = data.getBlockDetails
   return (
-    <div className="block-details">
-      <div>Block Details {blockHash}</div>
-      <div>Size: {details.size}</div>
-      <div>BlockIndex: {details.block_index}</div>
-      <div>PrevBlock: {details.prev_block}</div>
-      <div>Hash: {details.hash}</div>
-      <h3>Transactions: </h3> 
-      <ul>
-        {details.tx.map(transaction => <Transaction key={transaction.hash} transaction={transaction} />)}
-      </ul>
+    
+    <div className="block-container">
+      <Link to="/">Back</Link>
+      <div className="block-details">
+        <Link><strong>Block Details:</strong> {blockHash}</Link>
+        <div><strong>Size:</strong> {details.size}</div>
+        <div><strong>BlockIndex:</strong> {details.block_index}</div>
+        <div><strong>PrevBlock:</strong> {details.prev_block}</div>
+        <div><strong>Hash:</strong> {details.hash}</div>
+        <h3><strong>Transactions:</strong> </h3> 
+        <ul>
+          {details.tx.map(transaction => <Transaction key={transaction.hash} transaction={transaction} />)}
+        </ul>
+      </div>
     </div>
   )
 })

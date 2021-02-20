@@ -5,9 +5,9 @@ export default memo(function Transaction(props) {
   const { transaction } = props
   return (
     <div className="transaction">
-      <div>fee:{transaction.fee}</div>
-      <div>balance:{transaction.balance}</div>
-      <div>size:{transaction.size}</div>
+      <div><strong>fee:</strong>{transaction.fee}</div>
+      <div><strong>balance:</strong>{transaction.balance}</div>
+      <div><strong>size:</strong>{transaction.size}</div>
     </div>
   )
 })
