@@ -3,8 +3,8 @@ import { gql } from 'apollo-server-lambda'
 export const typeDefs = gql`
   type Query {
     randomNumber: Int @cacheControl(maxAge: 30)
-    getBlockDetails(blockHash: String!): BlockDetails @cacheControl(maxAge: 30)
-    getBlocks(limit: Int, skip: Int): [Block] @cacheControl(maxAge: 30)
+    getBlockDetails(blockHash: String!): BlockDetails @cacheControl(maxAge: 300)
+    getBlocks(limit: Int, skip: Int): [Block] @cacheControl(maxAge: 300)
   }
 
   scalar Date

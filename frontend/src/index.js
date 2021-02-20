@@ -4,12 +4,15 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { ApolloClient, InMemoryCache, gql, ApolloProvider, HttpLink } from '@apollo/client'
+import * as serviceWorker from './serviceWorker'
 // TODO enable APQs
 // import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'
 
 /* @ts-ignore */
 // const linkChain = createPersistedQueryLink(undefined)
 //   .concat(new HttpLink({ uri: `http://${process.env.REACT_APP_BACKEND_URL}/graphql` }))
+
+serviceWorker.register()
 
 const client = new ApolloClient({
   // link: linkChain,
