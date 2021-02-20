@@ -39,8 +39,22 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Environment
+- Environment variables are setup in `.env` file and needs to have the `REACT_APP_` prefix for them to be exported and usable on the frontend, currently this is where the backend url is setup.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Caching
+
+There are two layers of caching in the app:
+1. On the static assets level, which is via the service worker
+2. The API data level, which is handled by apollo-client's InMemoryCache
+
+## Deployment
+- The app can be deployed to a static server after running `yarn build`
+- To deploy to an s3 bucket setup for webhosting use `aws sync --delete dist/ s3://<S3_BUCKET_NAME>`
+- A CloudFront distribution should be added on top of the S3 bucket as a CDN layer for scalability and better availability
+
+## TODO
+- Styling / css
+- Create dynamic table component to better render the results
+- Enable Apollo Client's Automatic Persisted Queries on the frontend
