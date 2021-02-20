@@ -11,6 +11,9 @@ query getBlockDetails($blockHash: String!) {
     hash
     tx {
       size
+      fee
+      balance
+      hash
     }
   }
 }
@@ -35,6 +38,13 @@ export default memo(function BlockDetails() {
       <div>BlockIndex: {details.block_index}</div>
       <div>PrevBlock: {details.prev_block}</div>
       <div>Hash: {details.hash}</div>
+      <div>Transactions: {details.tx.map(transaction => (
+        <div key={transaction.hash}>
+          <div>fee:{transaction.fee}</div>
+          <div>balance:{transaction.balance}</div>
+          <div>size:{transaction.size}</div>
+        </div>
+      ))}</div>
     </div>
   )
 })

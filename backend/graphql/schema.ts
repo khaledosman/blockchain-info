@@ -30,6 +30,7 @@ export const typeDefs = gql`
     fee: Int
     result: Int
     balance: Int
+    hash: String
   }
 
 `

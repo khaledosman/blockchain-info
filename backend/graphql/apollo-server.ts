@@ -20,7 +20,7 @@ export function createApolloServer (redisCache: RedisCache): ApolloServer {
     introspection: true, // Boolean(IS_OFFLINE),
     tracing: Boolean(IS_OFFLINE),
     cacheControl: { defaultMaxAge: 60 * 60 }, // 1h
-    // ...(!IS_OFFLINE && { cache: redisCache }),
+    ...(!IS_OFFLINE && { cache: redisCache }),
     cache: redisCache,
     plugins: IS_OFFLINE ? [...commonPlugins, responseCachePlugin()] : [...commonPlugins, responseCachePlugin({ cache: redisCache })],
     context: async ({ event, context }): Promise<any> => {

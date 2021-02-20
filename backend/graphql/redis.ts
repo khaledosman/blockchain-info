@@ -1,7 +1,7 @@
 import { RedisCache } from 'apollo-server-cache-redis'
 import Redis from 'ioredis'
 
-let IS_OFFLINE = Boolean(process.env.IS_OFFLINE)
+const IS_OFFLINE = Boolean(process.env.IS_OFFLINE)
 const redisOpts = {
   host: process.env.REDIS_HOST,
   password: process.env.REDIS_PASSWORD,
@@ -16,7 +16,7 @@ export function onRedisConnected (): Promise<{redisCache: RedisCache, redisClien
       console.log('using cached redis connection')
       resolve({ redisCache, redisClient })
     } else {
-       IS_OFFLINE = false // enable redis offline for demo purposes
+      //  IS_OFFLINE = false // enable redis offline for demo purposes
       redisCache = !IS_OFFLINE && new RedisCache(redisOpts)
       redisClient = IS_OFFLINE ? null /* new Redis(redisOpts) */: redisCache.client
 
