@@ -18,7 +18,7 @@ export const typeDefs = gql`
 
   type BlockDetails {
     size: Int
-    blockIndex: Int
+    block_index: Int
     prev_block: String
     tx: [Transaction]
     hash: String

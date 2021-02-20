@@ -14,7 +14,7 @@ jspm_packages
 #yarn.lock
 package-lock.json
 
-.env
+#.env
 .DS_Store
 
 .eslintcache
