@@ -9,7 +9,7 @@ jspm_packages
 .webpack
 
 # Env variables/secrets
-env.yml
+#env.yml
 
 #yarn.lock
 package-lock.json
