@@ -1,6 +1,7 @@
 import React, {memo} from 'react'
 import { gql, useQuery } from '@apollo/client'
-import { Link } from 'react-router-dom'
+import Block from '../components/Block'
+import './Home.css'
 
 const GET_BLOCKS_QUERY = gql`
 query getBlocks {
@@ -19,15 +20,8 @@ export default memo(function Home() {
   if (error) return `Error! ${error.message}`;
 
   return (
-    <div>
-      {data.getBlocks.map(block => (
-        <Link to={`/details/${block.hash}`} key={block.hash}>
-          hash: {block.hash}
-          height: {block.height}
-          time: {block.time}
-
-        </Link>
-      ))}
+    <div className="home">
+      {data.getBlocks.map(block => <Block block={block} key={block.hash} />)}
     </div>
   )
 })
