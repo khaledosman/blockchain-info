@@ -40,10 +40,17 @@
 
 ## Deployment
 
+The app can be hosted on AWS Lambdas + APIGateway, all the necessary cloudformation setup is already handled in the `serverless.yml` file
 - Setup your aws credentials and aws profile using `aws configure --profile <aws_profile>`
 - `npm install`
 - `yarn deploy:dev` to deploy dev environment
 - `yarn deploy:live` to deploy to live
+
+## TODO
+
+1. Add some lambdas to fetch the blocks periodically and store it in the mongo database
+2. Let the resolvers fetch the data from the database if exists instead of going to the API everytime (when the redis graphql cache expires)
+3. Using the mongo database will allow us to fetch only the requested fields from the database using `getMongooseSelectionFromFields` helper function, as opposed to curently fetching and downloading everything from the API which will provide a massive performance win as explained [here](https://itnext.io/graphql-performance-tip-database-projection-82795e434b44)
 
 ## Releasing
 
