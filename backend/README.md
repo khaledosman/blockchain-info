@@ -37,7 +37,7 @@
 
 - The server utilizes apollo-server's cache capabilities to enable Automatic Persisted Queries as well as caching on the Schema level via redis, all graphql queries and their responses are therefore cached with a preset expiration time.
 - The default setup uses a free redis cluster hosted on redislabs, redsmin.com can be used as a GUI around redis to view what's in the cache
-- The typescript serverless template is optimised for minimum bundle size & build speed via webpack and yarn as explained in details [here](https://itnext.io/how-to-optimise-your-serverless-typescript-webpack-eslint-setup-for-performance-86d052284505)
+- The typescript serverless template is optimised for minimum bundle size & build speed via webpack and yarn as explained in details in my article [here](https://itnext.io/how-to-optimise-your-serverless-typescript-webpack-eslint-setup-for-performance-86d052284505)
 - Serverless-plugin-warmup is added to keep the lambda warm and minimise potential coldstart penalties
 
 ## Deployment
@@ -52,7 +52,7 @@ The app can be hosted on AWS Lambdas + APIGateway, all the necessary cloudformat
 
 1. Add some lambdas to fetch the blocks periodically and store it in the mongo database
 2. Let the resolvers fetch the data from the database if exists instead of going to the API everytime (when the redis graphql cache expires)
-3. Using the mongo database will allow us to fetch only the requested fields from the database using `getMongooseSelectionFromFields` helper function, as opposed to curently fetching and downloading everything from the API which will provide a massive performance win as explained [here](https://itnext.io/graphql-performance-tip-database-projection-82795e434b44)
+3. Using the mongo database will allow us to fetch only the requested fields from the database using `getMongooseSelectionFromFields` helper function, as opposed to curently fetching and downloading everything from the API which will provide a massive performance win as explained in my articles [here](https://itnext.io/graphql-performance-tip-database-projection-82795e434b44) and [here](https://itnext.io/performance-tips-for-mongodb-mongoose-190732a5d382)
 
 ## Releasing
 
