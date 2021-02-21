@@ -3,41 +3,42 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { ApolloClient, InMemoryCache, gql, ApolloProvider, HttpLink } from '@apollo/client'
+import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink } from '@apollo/client'
 import * as serviceWorker from './serviceWorker'
-// TODO enable APQs
-// import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'
-
-/* @ts-ignore */
-// const linkChain = createPersistedQueryLink(undefined)
-//   .concat(new HttpLink({ uri: `http://${process.env.REACT_APP_BACKEND_URL}/graphql` }))
+import { createPersistedQueryLink } from '@apollo/client/link/persisted-queries'
+import { persistCache, LocalStorageWrapper } from 'apollo3-cache-persist';
+import { sha256 } from 'crypto-hash';
 
 serviceWorker.register()
 
-const client = new ApolloClient({
-  // link: linkChain,
-  uri: `http://${process.env.REACT_APP_BACKEND_URL}/graphql`,
-  cache: new InMemoryCache()
+const linkChain = createPersistedQueryLink({sha256, useGETForHashedQueries: true})
+  .concat(new HttpLink({ uri: `http://${process.env.REACT_APP_BACKEND_URL}/graphql` }))
+const cache = new InMemoryCache()
+
+persistCache({
+  cache,
+  storage: new LocalStorageWrapper(window.localStorage),
+}).then(() => {
+
+  
+  const client = new ApolloClient({
+    link: linkChain,
+    // uri: `http://${process.env.REACT_APP_BACKEND_URL}/graphql`,
+    cache
+  })
+  return client
+})
+.then(client => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </React.StrictMode>,
+    document.getElementById('root')
+  )
 })
 
-client
-  .query({
-    query: gql`
-      query randomNumber {
-        randomNumber
-      }
-    `
-  })
-  .then(result => console.log(result))
-
-ReactDOM.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
-)
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
