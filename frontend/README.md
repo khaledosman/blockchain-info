@@ -36,7 +36,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 There are two layers of caching in the app:
 1. On the static assets level, which is via the service worker to support the app being available on dodgy connections or even completely offline
-2. The API data level, which is handled by apollo-client's InMemoryCache, ideally we should switch to a localStorage or indexDB solution in the future to support caching of the first requests aswell
+2. The API data level, which is handled by apollo-client's InMemoryCache & apollo persist to persist data in localStorage
 3. JavaScript chunks are code-splitted, lazy-loaded and prefetched using webpack's dynamic imports and magic comments
 4. all components are pure components via `memo`
 
@@ -48,6 +48,6 @@ There are two layers of caching in the app:
 ## TODO
 - Styling / css
 - Create dynamic table component to better render the results
-- Enable Apollo Client's Automatic Persisted Queries on the frontend
+- ~Enable Apollo Client's Automatic Persisted Queries on the frontend~
 - Proper PWA handling such as "Content cached for offline usage" message, click-to-update functionality, caching non-graphql GET requests, "user is online/offline" messages as implemented in my other repose [here](https://github.com/khaledosman/create-react-pwa) and [here as a usecase implementation of an offline first PWA that works without network at all](https://github.com/khaledosman/wikipedia-page)
 - Maybe go back to typescript files and properly fix the issues encountered
