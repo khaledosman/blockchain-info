@@ -6,14 +6,14 @@ export const resolvers = {
       return Math.round(Math.random() * 100)
     },
     getBlocks: () => {
-        return axios.get('https://blockchain.info/blocks?format=json')
+      return axios.get('https://blockchain.info/blocks?format=json')
         .then(res => res.data)
         .then(data => data.blocks)
     },
     getBlockDetails: (root, args) => {
       console.log(args)
       return axios.get(`https://blockchain.info/rawblock/${args.blockHash}`)
-      .then(res => res.data)
+        .then(res => res.data)
     }
   },
   Date: new GraphQLScalarType({
