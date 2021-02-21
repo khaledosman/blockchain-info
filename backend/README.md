@@ -33,10 +33,12 @@
 
 - environment variables can be setup in `env.yml` file where you can set different variable values for each aws stage / environment
 
-## Caching
+## Caching & Performance
 
-- The server utilizes apollo-server's cache capabilities to enable Automatic Persisted Queries as well as caching on the Schema level via redis.
-- The default setup uses a free redis cluster hosted on redislabs, redsmin.com can be used as a GUI around redis
+- The server utilizes apollo-server's cache capabilities to enable Automatic Persisted Queries as well as caching on the Schema level via redis, all graphql queries and their responses are therefore cached with a preset expiration time.
+- The default setup uses a free redis cluster hosted on redislabs, redsmin.com can be used as a GUI around redis to view what's in the cache
+- The typescript serverless template is optimised for minimum bundle size & build speed via webpack and yarn as explained in details [here](https://itnext.io/how-to-optimise-your-serverless-typescript-webpack-eslint-setup-for-performance-86d052284505)
+- Serverless-plugin-warmup is added to keep the lambda warm and minimise potential coldstart penalties
 
 ## Deployment
 
