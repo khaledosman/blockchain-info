@@ -29,17 +29,6 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-
 ## Environment
 - Environment variables are setup in `.env` file and needs to have the `REACT_APP_` prefix for them to be exported and usable on the frontend, currently this is where the backend url is setup.
 
@@ -60,4 +49,4 @@ There are two layers of caching in the app:
 - Styling / css
 - Create dynamic table component to better render the results
 - Enable Apollo Client's Automatic Persisted Queries on the frontend
-- Proper PWA handling such as "Content cached for offline usage" message, click-to-update functionality, caching non-graphql GET requests, "user is online/offline" messages as implemented [here](https://github.com/khaledosman/create-react-pwa) or [here](https://github.com/khaledosman/wikipedia-page)
+- Proper PWA handling such as "Content cached for offline usage" message, click-to-update functionality, caching non-graphql GET requests, "user is online/offline" messages as implemented in my other repose [here](https://github.com/khaledosman/create-react-pwa) and [here as a usecase implementation of an offline first PWA that works without network at all](https://github.com/khaledosman/wikipedia-page)
