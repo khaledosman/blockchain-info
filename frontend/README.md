@@ -50,3 +50,4 @@ There are two layers of caching in the app:
 - Create dynamic table component to better render the results
 - Enable Apollo Client's Automatic Persisted Queries on the frontend
 - Proper PWA handling such as "Content cached for offline usage" message, click-to-update functionality, caching non-graphql GET requests, "user is online/offline" messages as implemented in my other repose [here](https://github.com/khaledosman/create-react-pwa) and [here as a usecase implementation of an offline first PWA that works without network at all](https://github.com/khaledosman/wikipedia-page)
+- Maybe go back to typescript files and properly fix the issues encountered
